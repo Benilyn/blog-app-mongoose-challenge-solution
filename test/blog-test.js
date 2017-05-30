@@ -102,13 +102,85 @@ describe('BlogPost API resource', function() {
 					resBlogPost.id.should.equal(post.id);
 					resBlogPost.title.should.equal(post.title);
 					resBlogPost.content.should.equal(post.content);
-					resBlogPost.author.should.equal(post.authorName);
+					resBlogPost.author.should.contain(post.author.firstName, post.author.lastName);
 				}); //.then (function(post))
 		}); //it(should return with right fields)
-
 	}); //describe('GET endpoint')
+/*
+	describe('POST endpoint', function() {
+		it('should add a new blog post', function() {
+			const newBlogPost = generateBlogPost();
 
+			return chai.request(app)
+			.post('/posts')
+			.send(newBlogPost)
+			.then(function(res) {
+				res.should.have.status(201);
+				res.should.be.json;
+				res.body.should.be.a('object');
+				res.body.should.include.keys(
+					'id',
+					'title',
+					'content',
+					'author',
+					'created'
+				) //res.body.should.include.keys
+				
+				res.body.title.should.equal(newBlogPost.title);
+				res.body.id.should.not.be.null;
+				res.body.created.should.not.be.null;
+				res.body.content.should.equal(newBlogPost.content);
+				res.body.author.should.equal(newBlogPost.authorName);
+				return BlogPost.findById(res.body.id);
+			}) //.then(function(res))
 
+			.then(function(post) {
+				resBlogPost.id.should.equal(post.id);
+				resBlogPost.title.should.equal(post.title);
+				resBlogPost.content.should.equal(post.content);
+				resBlogPost.author.should.equal(post.authorName);
+				resBlogPost.created.should.equal(post.created);
+			}); //.then(function(post))
+		}); //it(should add a new blog post)
+	}); //describe(POST endpoint)
+
+	describe('PUT endpoint', function() {
+		it('should update fields you send over', function() {
+			const updatePost = {
+				title: 'Testing update',
+				content: 'The quick brown fox jumped over the lazy dog.',
+				author: {
+					firstName: 'Lily',
+					lastName: 'Bud'
+				},
+			}; //const updatePost
+
+			return BlogPost
+				.findOne()
+				.exec()
+				.then(function(post) {
+					updatePost.id = post.id;
+					return chai.request(app)
+					.put('/posts/${post.id}')
+					.send(updatePost);
+				})
+				.then(function(res) {
+					res.should.have.status(1);
+					res.should.be.json;
+					res.body.should.be.a('object');
+					res.body.title.should.equal(updatePost.title);
+					res.body.author.should.equal(updatePost.authorName);
+					res.body.content.should.equal(updatePost.content);
+					return BlogPost.findById(updatePost.id).exec();
+				})
+				.then(function(post) {
+					post.title.should.equal(updatePost.title);
+					post.content.should.equal(updatePost.content);
+					post.author.should.be.equal(updatePost.authorName);
+				}); //.then(function(post))
+		}); //it(should update fields you send over)
+	}); //describe (PUT endpoint)
+*/
 
 }); //describe('BlogPost API resource')
 
