@@ -130,16 +130,16 @@ describe('BlogPost API resource', function() {
 				res.body.id.should.not.be.null;
 				res.body.created.should.not.be.null;
 				res.body.content.should.equal(newBlogPost.content);
-				res.body.author.should.equal(newBlogPost.authorName);
+				res.body.author.should.contain(newBlogPost.author.firstName, newBlogPost.author.lastName);
 				return BlogPost.findById(res.body.id);
 			}) //.then(function(res))
 
 			.then(function(post) {
-				resBlogPost.id.should.equal(post.id);
-				resBlogPost.title.should.equal(post.title);
-				resBlogPost.content.should.equal(post.content);
-				resBlogPost.author.should.equal(post.authorName);
-				resBlogPost.created.should.equal(post.created);
+				newBlogPost.id.should.equal(post.id);
+				newBlogPost.title.should.equal(post.title);
+				newBlogPost.content.should.equal(post.content);
+				newBlogPost.author.should.contain(post.author.firstName, post.author.lastName);
+				newBlogPost.created.should.equal(post.created);
 			}); //.then(function(post))
 		}); //it(should add a new blog post)
 	}); //describe(POST endpoint)
@@ -165,22 +165,41 @@ describe('BlogPost API resource', function() {
 					.send(updatePost);
 				})
 				.then(function(res) {
-					res.should.have.status(1);
+					res.should.have.status(201);
 					res.should.be.json;
 					res.body.should.be.a('object');
 					res.body.title.should.equal(updatePost.title);
-					res.body.author.should.equal(updatePost.authorName);
+					res.body.author.should.contain(updatePost.author,firstName, updatePost.author.lastName);
 					res.body.content.should.equal(updatePost.content);
 					return BlogPost.findById(updatePost.id).exec();
 				})
 				.then(function(post) {
 					post.title.should.equal(updatePost.title);
 					post.content.should.equal(updatePost.content);
-					post.author.should.be.equal(updatePost.authorName);
+					post.author.should.be.contain(updatePost.author.firstName, updatePost.author.lastName);
 				}); //.then(function(post))
 		}); //it(should update fields you send over)
 	}); //describe (PUT endpoint)
 */
+	describe('DELETE endpoint', function() {
+		it('delete a blog post by id', function() {
+			let post;
+			return BlogPost
+				.findOne()
+				.exec()
+				.then(function(_post) {
+					post = _post;
+					return chai.request(app).delete(`/posts/${post.id}`);
+				}) //.then(function(_post))
+				.then(function(res) {
+					res.should.have.status(204);
+					return BlogPost.findById(post.id).exec();
+				}) //.then(function(res))
+				.then(function(_post) {
+					should.not.exist(_post);
+				}); //.then(function(_post))
+		}); //it(delete a blog post by id)
+	}); //describe(DELETE endpoint)
 
 }); //describe('BlogPost API resource')
 
