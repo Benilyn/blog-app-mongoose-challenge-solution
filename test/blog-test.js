@@ -106,7 +106,7 @@ describe('BlogPost API resource', function() {
 				}); //.then (function(post))
 		}); //it(should return with right fields)
 	}); //describe('GET endpoint')
-/*
+
 	describe('POST endpoint', function() {
 		it('should add a new blog post', function() {
 			const newBlogPost = {
@@ -142,15 +142,14 @@ describe('BlogPost API resource', function() {
 			}) //.then(function(res))
 
 			.then(function(post) {
-			//	post.id.should.equal(post.id);
 				post.title.should.equal(newBlogPost.title);
 				post.content.should.equal(newBlogPost.content);
-				post.author.should.contain(newBlogPost.author.firstName, newBlogPost.author.lastName);
-			//	post.created.should.equal(newBlogPost.created);
+				post.author.firstName.should.equal(newBlogPost.author.firstName);
+				post.author.lastName.should.equal(newBlogPost.author.lastName);
 			}); //.then(function(post))
 		}); //it(should add a new blog post)
 	}); //describe(POST endpoint)
-*/
+
 	describe('PUT endpoint', function() {
 		it('should update fields you send over', function() {
 			const updatePost = {
