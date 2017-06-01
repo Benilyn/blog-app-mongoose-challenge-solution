@@ -2,10 +2,4 @@ language: node_js
 node_js: node
 services:
 - mongodb
-deploy:
-  provider: heroku
-  api_key:
-    secure: YaaIVIRvo/d635zW1qZy5defCL5tWb6QnFNlXl8SmiE0cNO8hlh0J2zLtujSXvXZgbv09EtdL3ato1/KnCrN2F4B/FLk1OpohEuT306H3DTbhgw1PgYmB7rQkvpYCk+Sk3E3LTAd9707jWsTZTCKedTJCdi8kfGL7Os2fW27M/LA+T7aKKyJgoZ7ViiM2GXgoMW0g6P5OcoS4TGJbXfWvRNmnspvXg28622RMsrDCI8IX0pZgCAXtB4wswSbkTkHzu8wVL9ZI56b6scRWTStkLkHdFtEGTPqbMm88Yp25DTcBbM/dLIIcCNY+nwaZmWXWICsTna7R/OzTF62/Oh8cn0D1DMheSGumtcSdSttConMUYnX5OVL1wFSj1UeO1DIb/lED9GXDCatPsaO+b63mdoR7CwGNSfS5Y/pq1pPuZnTCiri9jHqbjhVxP1GYKQNrE1FzT2Ri12Ozl5HyYBo0/y605J7SA4XKIJ+P9CS78LdfgAaAF+gJqk/QgHC6b2fhcCCj5AvW8qrwBbLQ+u//fRg4ZKD0OBd7sG7cVipMrrp7eOE4voNka3b2W7Ie3s0/gzwKx0Cagk/XY/t0CJG65L9jPyS/hvNsDaY15QHGY2tszTxhr1NaHTvuCxdrsMyDSwchXC6UhSPehUjPPaBKAzv1yCuxuXmg6di7z2wBS4=
-  app: 'yes'
-  on:
-    repo: Benilyn/blog-app-mongoose-challenge-solution
+
