@@ -2,3 +2,9 @@ language: node_js
 node_js: node
 services:
 - mongodb
+deploy:
+  provider: heroku
+  api_key: 5f4c34e6-cdaa-4c05-b6a7-b5e20f5623d9
+  app: heroku create
+  on:
+    repo: Benilyn/blog-app-mongoose-challenge-solution
