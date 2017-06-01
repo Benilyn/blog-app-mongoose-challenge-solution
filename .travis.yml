@@ -2,4 +2,10 @@ language: node_js
 node_js: node
 services:
 - mongodb
-
+deploy:
+  provider: heroku
+  api_key:
+    secure: rwKb48eW2LYDrSJ8wmMZORz1ZQykiLPC1zYNshNo4yR/pVmVqWDD5093xpoa0uRBbFe7oKfFwQ4E0CcN40y4hR2byxpPmSmMyl1VS2+7oEP4LupxhzXOr1q9D95HR+2I1Q3ArlH9zYjuRRHYSCC59VKNXw7gDNlVVdUxpI81g5BDSQASEUt8zSCs6MGJZCRsNK+CyEftx9w0o+7lOiWN+8iEahYl6J2cOctolBZOVE4yG+nalGbEhL6UXrxhHZkXiPWWPQdf7nk8K2QgKYrddy1w4KNXW97eUqgSrHzg4pb3Vx0Fmr5im4aIN2J0SXMZDwccyg5wmtN/I0mfyy8YMZS1qkEQr6x5q3fvK5n+BnNkehDj8YgOY/a0Tm3JfdvXf5PqdEAMYW0Rs+lxYQHE7xrWLsfFAku2yR1Umus49/byqlab3oClH7B0WqttlBRa2gkyBaQbtVeUDackuD+AB3xn9mU6DKxEmRhmy8xxmZ3H8rkHlZV+6o7WL94PEmkOnWcu3NCR+EYUMGCupB9u16MalUVkw8gIa5rzElGRApkKezFBtFlcKmfdFMgFsvHGxn7gM5FKPaDJNG1x/YcWEMXy4tQXyP70nGrCKFW4OyWpRIiB5xftm+VqUJm9MvmDokSaUjnnT8PoBxrvZI/R0TQ2w/QIOAWlaK9CSJSKrD0=
+  app: calm-coast-76353
+  on:
+    repo: Benilyn/blog-app-mongoose-challenge-solution
